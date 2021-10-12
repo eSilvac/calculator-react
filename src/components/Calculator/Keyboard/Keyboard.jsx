@@ -1,17 +1,17 @@
-import { keyboardOptions, operationLabels } from './helpers';
+import Key from './Key/Key';
+import { keyboardLayoutOptions } from './helpers';
+
 import * as S from './styles';
 
 const CalculatorKeyboard = ({ type }) => {
-  const keyBoardDistribution = keyboardOptions[type];
+  const keyBoardDistribution = keyboardLayoutOptions[type];
 
   return (
-    <S.Wrapper>
-      {keyBoardDistribution.map(key => {
-        const label = typeof key === 'string' ? operationLabels[key] : <S.NumberKey>{key}</S.NumberKey>;
-
-        return label;
+    <S.KeyboardWrapper>
+      {keyBoardDistribution.map(keyOptions => {
+        return <Key key={keyOptions.value} {...keyOptions} />;
       })}
-    </S.Wrapper>
+    </S.KeyboardWrapper>
   );
 };
 
