@@ -3,13 +3,13 @@ import { keyboardLayoutOptions } from './helpers';
 
 import * as S from './styles';
 
-const CalculatorKeyboard = ({ type }) => {
+const CalculatorKeyboard = ({ type, onChange }) => {
   const keyBoardDistribution = keyboardLayoutOptions[type];
 
   return (
     <S.KeyboardWrapper>
       {keyBoardDistribution.map(keyOptions => {
-        return <Key key={keyOptions.value} {...keyOptions} />;
+        return <Key key={keyOptions.value} onChange={onChange} {...keyOptions} />;
       })}
     </S.KeyboardWrapper>
   );

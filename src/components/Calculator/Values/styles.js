@@ -9,13 +9,15 @@ export const ValueWrapper = styled.div`
 
 export const Operation = styled.p`
   margin: 0;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 500;
+  height: 47.27px;
   color: ${props => props.theme.operationText};
 `;
 
 export const Result = styled.p`
   margin: 0;
-  font-size: 20px;
+  font-size: 25px;
+  height: 35px;
   color: ${props => props.theme.resultText};
 `;

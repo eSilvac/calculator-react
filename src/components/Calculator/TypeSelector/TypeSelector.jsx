@@ -10,8 +10,8 @@ const CalculatorTypeSelector = ({ calculatorType, onChange }) => {
   return (
     <S.TypeSelectorWrapper>
       <S.ButtonGroup>
-        {options.map(({ value, label }) => (
-          <S.Button onClick={() => onChange(value)} selected={calculatorType === value}>
+        {options.map(({ value, label }, idx) => (
+          <S.Button key={idx} onClick={() => onChange(value)} selected={calculatorType === value}>
             {label}
           </S.Button>
         ))}

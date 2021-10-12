@@ -3,8 +3,8 @@ import * as S from './styles';
 const CalculatorValues = ({ operation, result }) => {
   return (
     <S.ValueWrapper>
-      <S.Operation>{operation}123</S.Operation>
-      <S.Result>{result}123123</S.Result>
+      <S.Operation>{operation}</S.Operation>
+      <S.Result>{result}</S.Result>
     </S.ValueWrapper>
   );
 };

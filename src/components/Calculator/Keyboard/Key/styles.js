@@ -29,6 +29,7 @@ export const KeyLabel = styled.div`
   cursor: pointer;
   line-height: 54px;
   text-align: center;
+  user-select: none;
 
   &:hover {
     opacity: 0.9;
