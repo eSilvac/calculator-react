@@ -17,7 +17,7 @@ const CalculatorValues = ({ operation, result, handleBackToHistory }) => {
   };
 
   return (
-    <S.ValueWrapper>
+    <S.ValueWrapper data-testid='calculator-values'>
       <S.IconWrapper onClick={handleClick}>
         <FontAwesomeIcon icon={faHistory} />
       </S.IconWrapper>
@@ -42,8 +42,8 @@ const CalculatorValues = ({ operation, result, handleBackToHistory }) => {
           </MenuItem>
         )}
       </Menu>
-      <S.Operation value={operation.join(' ')} disabled />
-      <S.Result>{result}</S.Result>
+      <S.Operation data-testid='calculator-values-operator' value={operation.join(' ')} disabled />
+      <S.Result data-testid='calculator-values-result'>{result}</S.Result>
     </S.ValueWrapper>
   );
 };

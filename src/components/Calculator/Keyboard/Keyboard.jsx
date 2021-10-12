@@ -7,7 +7,7 @@ const CalculatorKeyboard = ({ type, onChange }) => {
   const keyBoardDistribution = keyboardLayoutOptions[type];
 
   return (
-    <S.KeyboardWrapper>
+    <S.KeyboardWrapper data-testid='calculator-keyboard'>
       {keyBoardDistribution.map(keyOptions => {
         return <Key key={keyOptions.value} onChange={onChange} {...keyOptions} />;
       })}
