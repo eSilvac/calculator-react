@@ -57,7 +57,6 @@ const useCalculator = () => {
         setOperation([newValue]);
         return;
       } else {
-        console.log('test');
         setSolveFlag(false);
       }
 
@@ -76,7 +75,7 @@ const useCalculator = () => {
 
   const handleSolve = () => {
     const oldCalcs = JSON.parse(localStorage.getItem('old_calcs')) || [];
-    localStorage.setItem('old_calcs', JSON.stringify([{ operation, result }, ...oldCalcs.slice(0, 4)]));
+    localStorage.setItem('old_calcs', JSON.stringify([{ operation, result }, ...oldCalcs.slice(0, 9)]));
 
     setSolveFlag(true);
     setOperation(result);
@@ -129,20 +128,30 @@ const useCalculator = () => {
       return calculate([...initial, formatNumber(solution), ...rest]);
     }
 
-    if (arr.includes('*')) {
-      const position = arr.findIndex(ele => ele === '*');
-      const solution = parseFloat(arr[position - 1]) * parseFloat(arr[position + 1]);
-      const initial = arr.slice(0, position - 1);
-      const rest = arr.slice(position + 2);
+    if (arr.includes('*') || arr.includes('/')) {
+      const positionDivision = arr.findIndex(ele => ele === '/');
+      const positionTimes = arr.findIndex(ele => ele === '*');
+      const hasDivision = positionDivision !== -1;
+      const hasTimes = positionTimes !== -1;
 
-      return calculate([...initial, formatNumber(solution), ...rest]);
-    }
+      let initial, rest, solution;
 
-    if (arr.includes('/')) {
-      const position = arr.findIndex(ele => ele === '/');
-      const initial = arr.slice(0, position - 1);
-      const rest = arr.slice(position + 2);
-      const solution = parseFloat(arr[position - 1]) / parseFloat(arr[position + 1]);
+      const timesProcess = () => {
+        initial = arr.slice(0, positionTimes - 1);
+        rest = arr.slice(positionTimes + 2);
+        solution = parseFloat(arr[positionTimes - 1]) * parseFloat(arr[positionTimes + 1]);
+      };
+
+      const divisionProcess = () => {
+        initial = arr.slice(0, positionDivision - 1);
+        rest = arr.slice(positionDivision + 2);
+        solution = parseFloat(arr[positionDivision - 1]) / parseFloat(arr[positionDivision + 1]);
+      };
+
+      if (hasDivision && hasTimes) {
+        positionDivision < positionTimes ? divisionProcess() : timesProcess();
+      } else if (hasDivision) divisionProcess();
+      else timesProcess();
 
       return calculate([...initial, formatNumber(solution), ...rest]);
     }

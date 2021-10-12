@@ -40,6 +40,7 @@ export const Operation = styled.input`
 `;
 
 export const Result = styled.p`
+  text-align: right;
   width: 100%;
   margin: 0;
   font-size: 25px;

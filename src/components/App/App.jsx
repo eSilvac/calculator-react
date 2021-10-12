@@ -4,7 +4,7 @@ import * as S from './styles';
 
 const App = () => {
   return (
-    <S.App>
+    <S.App data-testid='calculator-app'>
       <Routes />
     </S.App>
   );
