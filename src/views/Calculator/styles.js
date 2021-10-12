@@ -69,6 +69,10 @@ export const calculatorTypesThemes = {
       border-radius: 4px;
       width: 53px;
       height: 53px;
+
+      &:hover {
+        opacity: 0.6;
+      }
     `,
 
     numberKey: css`

@@ -5,6 +5,7 @@ const listOfOperators = ['+', '-', '*', '/'];
 const useCalculator = () => {
   const [operation, setOperation] = useState([]);
   const [result, setResult] = useState('');
+  const [solveFlag, setSolveFlag] = useState(false);
 
   const lastAddedItem = operation[operation.length - 1];
   const lastAddedItemType =
@@ -40,6 +41,7 @@ const useCalculator = () => {
     }
 
     if (newValueItem === 'operator') {
+      setSolveFlag(false);
       setOperation(prev => [...prev, newValue]);
       return;
     }
@@ -48,6 +50,15 @@ const useCalculator = () => {
       if (newValue === '%') {
         handlePercentage();
         return;
+      }
+
+      if (solveFlag) {
+        setSolveFlag(false);
+        setOperation([newValue]);
+        return;
+      } else {
+        console.log('test');
+        setSolveFlag(false);
       }
 
       let newNumber = lastAddedItemType === 'number' ? lastAddedItem + newValue : newValue;
@@ -64,7 +75,11 @@ const useCalculator = () => {
   };
 
   const handleSolve = () => {
-    setOperation([result]);
+    const oldCalcs = JSON.parse(localStorage.getItem('old_calcs')) || [];
+    localStorage.setItem('old_calcs', JSON.stringify([{ operation, result }, ...oldCalcs.slice(0, 4)]));
+
+    setSolveFlag(true);
+    setOperation(result);
     setResult('');
   };
 
@@ -109,7 +124,7 @@ const useCalculator = () => {
       const initial = arr.slice(0, position - 1);
       let rest = arr.slice(position + 1);
 
-      if (rest.length > 0) rest = ['*', ...rest];
+      if (rest.length > 0 && !listOfOperators.includes(rest[0])) rest = ['*', ...rest];
 
       return calculate([...initial, formatNumber(solution), ...rest]);
     }
@@ -151,6 +166,11 @@ const useCalculator = () => {
     }
   };
 
+  const handleBackToHistory = ({ result, operation }) => {
+    setOperation(operation);
+    setResult(result);
+  };
+
   const formatNumber = number => {
     return number
       .toFixed(4)
@@ -158,7 +178,7 @@ const useCalculator = () => {
       .toString();
   };
 
-  return { operation, result, handleChange };
+  return { operation, result, handleChange, handleBackToHistory };
 };
 
 export default useCalculator;

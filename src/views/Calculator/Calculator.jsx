@@ -12,7 +12,7 @@ import { calculatorTypesThemes } from './styles';
 
 const Calculator = () => {
   const [calculatorType, setCalculatorType] = useState('ios');
-  const { operation, result, handleChange } = useCalculator();
+  const { operation, result, handleChange, handleBackToHistory } = useCalculator();
 
   const theme = calculatorTypesThemes[calculatorType];
 
@@ -20,7 +20,7 @@ const Calculator = () => {
     <ThemeProvider theme={theme}>
       <S.Container>
         <CalculatorTypeSelector calculatorType={calculatorType} onChange={setCalculatorType} />
-        <CalculatorValues operation={operation} result={result} />
+        <CalculatorValues operation={operation} result={result} handleBackToHistory={handleBackToHistory} />
         <CalculatorKeyboard type={calculatorType} onChange={handleChange} />
       </S.Container>
     </ThemeProvider>
