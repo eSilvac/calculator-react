@@ -42,7 +42,7 @@ const CalculatorValues = ({ operation, result, handleBackToHistory }) => {
           </MenuItem>
         )}
       </Menu>
-      <S.Operation>{operation}</S.Operation>
+      <S.Operation value={operation} type='number' disabled />
       <S.Result>{result}</S.Result>
     </S.ValueWrapper>
   );

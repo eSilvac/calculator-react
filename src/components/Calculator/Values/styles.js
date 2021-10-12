@@ -14,19 +14,63 @@ export const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const Operation = styled.p`
+export const Operation = styled.input`
+  width: 100%;
   margin: 0;
   font-size: 40px;
   font-weight: 500;
   height: 47.27px;
+  outline-width: 0 !important;
+  border: 0;
+  background-color: ${props => props.theme.bg};
+  text-align: right;
   color: ${props => props.theme.operationText};
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const Result = styled.p`
+  width: 100%;
   margin: 0;
   font-size: 25px;
   height: 35px;
+  padding-right: 5px;
+  overflow-y: hidden;
+  overflow-x: scroll;
   color: ${props => props.theme.resultText};
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 2px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    margin: 5px;
+    padding: 5px;
+    background-color: ${props => props.theme.bg};
+    border-radius: 2px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    border-radius: 2px;
+    background-color: gray;
+  }
 `;
 
 export const MenuItemOperation = styled.span`
