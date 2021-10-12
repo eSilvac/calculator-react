@@ -15,7 +15,12 @@ export const KeyWrapper = styled.div`
     }
 
     if (extended === 'bottom') {
-      return css``;
+      return css`
+        grid-row: span 2;
+        & > div {
+          ${theme.extendedKey}
+        }
+      `;
     }
   }}
 `;

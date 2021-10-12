@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export const keyboardLayoutOptions = {
-  iphone: [
+  ios: [
     { value: 'clear', label: 'AC', type: 'extraOption' },
     { value: 'backspace', label: <FontAwesomeIcon icon={faBackspace} />, type: 'extraOption' },
     { value: 'percentage', label: <FontAwesomeIcon icon={faPercentage} />, type: 'extraOption' },
@@ -28,7 +28,28 @@ export const keyboardLayoutOptions = {
     { value: 3, label: 3 },
     { value: 'plus', label: <FontAwesomeIcon icon={faPlus} />, type: 'operator' },
     { value: 0, label: 0, extended: 'right' },
-    { value: 'decimal', label: '.', type: 'number' },
+    { value: 'decimal', label: '.' },
     { value: 'solve', label: <FontAwesomeIcon icon={faEquals} />, type: 'solve' },
+  ],
+  android: [
+    { value: 'clear', label: 'C', type: 'operator' },
+    { value: 'divide', label: <FontAwesomeIcon icon={faDivide} />, type: 'operator' },
+    { value: 'times', label: <FontAwesomeIcon icon={faTimes} />, type: 'operator' },
+    { value: 'backspace', label: <FontAwesomeIcon icon={faBackspace} />, type: 'operator' },
+    { value: 7, label: 7 },
+    { value: 8, label: 8 },
+    { value: 9, label: 9 },
+    { value: 'minus', label: <FontAwesomeIcon icon={faMinus} />, type: 'operator' },
+    { value: 4, label: 4 },
+    { value: 5, label: 5 },
+    { value: 6, label: 6 },
+    { value: 'plus', label: <FontAwesomeIcon icon={faPlus} />, type: 'operator' },
+    { value: 1, label: 1 },
+    { value: 2, label: 2 },
+    { value: 3, label: 3 },
+    { value: 'solve', label: <FontAwesomeIcon icon={faEquals} />, type: 'solve', extended: 'bottom' },
+    { value: 'percentage', label: <FontAwesomeIcon icon={faPercentage} /> },
+    { value: 0, label: 0 },
+    { value: 'decimal', label: '.' },
   ],
 };

@@ -10,11 +10,12 @@ import useCalculator from '../../utils/hooks/useCalculator';
 import * as S from './styles';
 
 const calculatorTypesThemes = {
-  iphone: {
+  ios: {
     //Keyboard Configuration
     bg: '#1C1C1C',
     operationText: '#dedede',
     resultText: '#676767',
+    gap: '10px',
 
     // Keys Configuration
     keyCommons: css`
@@ -59,20 +60,69 @@ const calculatorTypesThemes = {
       padding-left: 19px;
     `,
   },
+  android: {
+    //Keyboard Configuration
+    bg: '#1C1C1C',
+    operationText: '#dedede',
+    resultText: '#676767',
+    gap: '8px',
+
+    // Keys Configuration
+    keyCommons: css`
+      border-radius: 4px;
+      width: 53px;
+      height: 53px;
+    `,
+
+    numberKey: css`
+      background-color: #292929;
+      color: #e5e5e5;
+      font-size: 35px;
+      font-weight: 500;
+
+      & > svg {
+        margin: 0 !important;
+      }
+    `,
+
+    operatorKey: css`
+      background-color: #142e47;
+      color: #329af8;
+      font-size: 22px;
+      font-weight: 500;
+    `,
+
+    solveKey: css`
+      font-size: 22px;
+      font-weight: bold;
+      background-color: #016cde;
+      color: #fff;
+    `,
+
+    extendedKey: css`
+      height: 100%;
+      border-radius: 4px;
+      align-items: center;
+
+      & > svg {
+        margin: 0 !important;
+      }
+    `,
+  },
 };
 
 const Calculator = () => {
-  const [calculatorTypes, setCalculatorType] = useState('iphone');
+  const [calculatorType, setCalculatorType] = useState('ios');
   const { operation, solution, handleChange } = useCalculator();
 
-  const theme = calculatorTypesThemes[calculatorTypes];
+  const theme = calculatorTypesThemes[calculatorType];
 
   return (
     <ThemeProvider theme={theme}>
       <S.Container>
-        <CalculatorTypeSelector />
+        <CalculatorTypeSelector calculatorType={calculatorType} onChange={setCalculatorType} />
         <CalculatorValues operation={operation} solution={solution} />
-        <CalculatorKeyboard type={calculatorTypes} />
+        <CalculatorKeyboard type={calculatorType} />
       </S.Container>
     </ThemeProvider>
   );
