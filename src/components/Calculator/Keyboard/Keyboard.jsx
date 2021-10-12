@@ -7,7 +7,7 @@ const CalculatorKeyboard = ({ type }) => {
   return (
     <S.Wrapper>
       {keyBoardDistribution.map(key => {
-        const label = typeof key === 'string' ? operationLabels[key] : key;
+        const label = typeof key === 'string' ? operationLabels[key] : <S.NumberKey>{key}</S.NumberKey>;
 
         return label;
       })}

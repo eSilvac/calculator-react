@@ -1,4 +1,4 @@
-import NumberText from './styles';
+import * as S from './styles';
 
 export const keyboardOptions = {
   iphone: [
@@ -14,9 +14,9 @@ export const keyboardOptions = {
     5,
     6,
     'minus',
-    '1',
-    '2',
-    '3',
+    1,
+    2,
+    3,
     'plus',
     0,
     'decimal',
@@ -24,6 +24,14 @@ export const keyboardOptions = {
   ],
 };
 
-const operationLabels = {
-  solve: '',
+export const operationLabels = {
+  solve: <S.SolveKey>=</S.SolveKey>,
+  plus: <S.OperationKey>+</S.OperationKey>,
+  minus: <S.OperationKey>-</S.OperationKey>,
+  times: <S.OperationKey>x</S.OperationKey>,
+  divide: <S.OperationKey>/</S.OperationKey>,
+  clear: <S.ExtraOptionsKey>AC</S.ExtraOptionsKey>,
+  opposite: <S.ExtraOptionsKey>AC</S.ExtraOptionsKey>,
+  percentage: <S.ExtraOptionsKey>AC</S.ExtraOptionsKey>,
+  decimal: <S.NumberKey>.</S.NumberKey>,
 };

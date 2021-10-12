@@ -12,12 +12,13 @@ import * as S from './styles';
 const calculatorTypesThemes = {
   iphone: {
     bg: '#1C1C1C',
-    numberBg: '#FF9500',
+    keyRadius: '50%',
+    numberBg: '#505050',
     numberText: '#fff',
-    operationBg: '#505050',
     operationText: '#fff',
-    resultBg: '#FF9500',
-    resultText: '#fff',
+    operationBg: '#FF9500',
+    solveBg: '#FF9500',
+    solveText: '#fff',
     extraOptionBg: '#D4D4D2',
     extraOptionText: '#1C1C1C',
   },
@@ -28,14 +29,13 @@ const Calculator = () => {
   const { operation, solution, handleChange } = useCalculator();
 
   const theme = calculatorTypesThemes[calculatorTypes];
-  console.log(theme);
 
   return (
     <ThemeProvider theme={theme}>
       <S.Container>
         <CalculatorTypeSelector />
         <CalculatorValues />
-        <CalculatorKeyboard />
+        <CalculatorKeyboard type={calculatorTypes} />
       </S.Container>
     </ThemeProvider>
   );
